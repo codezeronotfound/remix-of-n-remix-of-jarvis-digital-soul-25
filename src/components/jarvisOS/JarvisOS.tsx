@@ -79,6 +79,8 @@ export default function JarvisOS() {
             <EarthPulseModule />
           ) : active === "utilities" ? (
             <UtilitiesModule />
+          ) : active === "jarvis-avatar" ? (
+            <JarvisAvatarModule onNavigate={setActive} />
           ) : (
             <ModulePlaceholder feature={feature} />
           )}
