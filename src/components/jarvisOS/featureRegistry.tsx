@@ -1,11 +1,11 @@
 import {
   LayoutDashboard, TrendingUp, Newspaper, Search, Briefcase, Link2, Atom,
   ShoppingBag, HeartPulse, Users, BrainCircuit, FlaskConical, ShieldAlert,
-  Presentation, Cpu, Settings2, Smartphone, Mic, Trophy, CloudSun, Navigation, Banknote, Globe2, Wrench, Bot, LucideIcon,
+  Presentation, Cpu, Settings2, Smartphone, Mic, Trophy, CloudSun, Navigation, Banknote, Globe2, Wrench, Bot, Map, LucideIcon,
 } from "lucide-react";
 
 export type FeatureKey =
-  | "command-center" | "jarvis-avatar" | "stocks" | "money" | "news" | "sports" | "weather" | "transport" | "earth" | "utilities" | "search" | "business" | "links"
+  | "command-center" | "jarvis-avatar" | "satellite-map" | "stocks" | "money" | "news" | "sports" | "weather" | "transport" | "earth" | "utilities" | "search" | "business" | "links"
   | "atomic" | "trade" | "health" | "users" | "memory" | "lab" | "security"
   | "ppt" | "logic" | "admin" | "phone" | "voice";
 
@@ -21,6 +21,7 @@ export interface Feature {
 export const FEATURES: Feature[] = [
   { key: "command-center", label: "Command Center", short: "Home", icon: LayoutDashboard, accent: "blue", description: "Your mission control hub." },
   { key: "jarvis-avatar", label: "AI Avatar Jarvis", short: "Jarvis", icon: Bot, accent: "red", description: "Talking 3D avatar + voice command center." },
+  { key: "satellite-map", label: "Satellite Map", short: "Map", icon: Map, accent: "red", description: "Live ISS, quakes, weather & saved pins." },
   { key: "stocks", label: "Live Markets", short: "Markets", icon: TrendingUp, accent: "blue", description: "Stocks, crypto & trending tickers." },
   { key: "money", label: "Money & Metals", short: "Money", icon: Banknote, accent: "blue", description: "Forex (INR), gold & silver live." },
   { key: "transport", label: "Transport Live", short: "Transport", icon: Navigation, accent: "blue", description: "Flights, trains, traffic — real time." },

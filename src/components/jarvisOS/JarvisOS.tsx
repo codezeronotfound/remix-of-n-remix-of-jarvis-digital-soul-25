@@ -16,6 +16,7 @@ import MoneyModule from "./modules/MoneyModule";
 import EarthPulseModule from "./modules/EarthPulseModule";
 import UtilitiesModule from "./modules/UtilitiesModule";
 import JarvisAvatarModule from "./modules/JarvisAvatarModule";
+import SatelliteMapModule from "./modules/SatelliteMapModule";
 
 export default function JarvisOS() {
   const [active, setActive] = useState<FeatureKey>("command-center");
@@ -81,6 +82,8 @@ export default function JarvisOS() {
             <UtilitiesModule />
           ) : active === "jarvis-avatar" ? (
             <JarvisAvatarModule onNavigate={setActive} />
+          ) : active === "satellite-map" ? (
+            <SatelliteMapModule />
           ) : (
             <ModulePlaceholder feature={feature} />
           )}
