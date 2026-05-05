@@ -82,6 +82,8 @@ export default function JarvisOS() {
             <UtilitiesModule />
           ) : active === "jarvis-avatar" ? (
             <JarvisAvatarModule onNavigate={setActive} />
+          ) : active === "satellite-map" ? (
+            <SatelliteMapModule />
           ) : (
             <ModulePlaceholder feature={feature} />
           )}
