@@ -20,6 +20,7 @@ export interface Feature {
 
 export const FEATURES: Feature[] = [
   { key: "command-center", label: "Command Center", short: "Home", icon: LayoutDashboard, accent: "blue", description: "Your mission control hub." },
+  { key: "jarvis-avatar", label: "AI Avatar Jarvis", short: "Jarvis", icon: Bot, accent: "red", description: "Talking 3D avatar + voice command center." },
   { key: "stocks", label: "Live Markets", short: "Markets", icon: TrendingUp, accent: "blue", description: "Stocks, crypto & trending tickers." },
   { key: "money", label: "Money & Metals", short: "Money", icon: Banknote, accent: "blue", description: "Forex (INR), gold & silver live." },
   { key: "transport", label: "Transport Live", short: "Transport", icon: Navigation, accent: "blue", description: "Flights, trains, traffic — real time." },
