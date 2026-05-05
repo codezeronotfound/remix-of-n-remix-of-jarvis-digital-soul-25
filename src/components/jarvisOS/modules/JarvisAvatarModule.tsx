@@ -13,6 +13,7 @@ interface Props {
 
 // Map of voice phrases -> module keys
 const NAV_COMMANDS: Array<{ patterns: RegExp; target: FeatureKey; label: string }> = [
+  { patterns: /\b(open|show|go to)\s+(map|satellite|globe)/i, target: "satellite-map", label: "Satellite Map" },
   { patterns: /\b(open|show|go to)\s+(security|shield|cyber)/i, target: "security", label: "Cyber Shield" },
   { patterns: /\b(open|show|go to)\s+(market|stock)/i, target: "stocks", label: "Markets" },
   { patterns: /\b(open|show|go to)\s+news/i, target: "news", label: "News" },
