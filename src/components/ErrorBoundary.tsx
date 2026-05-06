@@ -1,61 +1,39 @@
+import React from "react";
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+type State = { hasError: boolean; error?: Error | null };
 
-interface Props {
-  children: ReactNode;
-  fallback?: ReactNode;
-}
+export default class ErrorBoundary extends React.Component<{ children?: React.ReactNode }, State> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
 
-interface State {
-  hasError: boolean;
-  error: Error | null;
-}
-
-class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null
-  };
-
-  public static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error) {
     return { hasError: true, error };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
+  componentDidCatch(error: Error, info: any) {
+    // In a real app you might log to an error reporting service here
+    // console.error("ErrorBoundary caught:", error, info);
   }
 
-  public render() {
+  reset = () => this.setState({ hasError: false, error: null });
+
+  render() {
     if (this.state.hasError) {
-      if (this.props.fallback) {
-        return this.props.fallback;
-      }
-      
       return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
-          <div className="max-w-md w-full bg-gray-900 p-8 rounded-lg border border-gray-800 shadow-xl">
-            <h2 className="text-2xl font-bold text-red-500 mb-4">Application Error</h2>
-            <div className="bg-gray-950 p-4 rounded mb-4 overflow-auto">
-              <p className="text-red-400 font-mono text-sm">
-                {this.state.error?.message}
-              </p>
-            </div>
-            <p className="text-gray-400 mb-4">
-              The application encountered an unexpected error. Please refresh the page or contact support if the issue persists.
-            </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-            >
-              Refresh Page
+        <div className="min-h-screen flex items-center justify-center bg-slate-900 text-slate-100 p-6">
+          <div className="max-w-lg text-center">
+            <h2 className="text-2xl font-bold mb-2">Something went wrong</h2>
+            <pre className="text-sm bg-slate-800 p-3 rounded mb-4">{String(this.state.error)}</pre>
+            <button onClick={this.reset} className="px-4 py-2 rounded bg-emerald-600">
+              Try again
             </button>
           </div>
         </div>
       );
     }
 
-    return this.props.children;
+    return this.props.children ?? null;
   }
 }
-
-export default ErrorBoundary;
